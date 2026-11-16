@@ -1,0 +1,446 @@
+/* FRAME INDEX demo page — film-archive editorial. Ink, ivory, one orange. */
+
+:root {
+  --ink: #08080a;
+  --ink-2: #0e0e11;
+  --panel: #101014;
+  --graphite: #26262b;
+  --rule: #2b2b31;
+  --ivory: #f2ede4;
+  --silver: #a7a29a;
+  --orange: #ff5a1f;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.fi-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 22px 40px;
+}
+
+/* ---------------------------------------------------------------- header */
+.fi-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 22px;
+}
+
+.fi-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fi-logo-mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--ivory);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: 0.04em;
+  box-shadow: inset 0 0 0 3px var(--ink), inset 0 0 0 4px rgb(242 237 228 / 0.3);
+}
+
+.fi-wordmark h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+
+.fi-tagline {
+  margin: 6px 0 0;
+  color: var(--orange);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.fi-header-meta {
+  margin: 0;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--silver);
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+
+.fi-meta-sep {
+  color: var(--orange);
+  margin: 0 8px;
+}
+
+/* ----------------------------------------------------------------- mount */
+.fi-mount {
+  border: 1px solid var(--graphite);
+  background: var(--ink-2);
+}
+
+.fi-stage {
+  line-height: 0;
+}
+
+.fi-stage media-i18n,
+.fi-stage video-player {
+  display: contents;
+}
+
+.fi-stage .media-skin {
+  width: 100%;
+}
+
+/* ----------------------------------------------------------- contact sheet */
+.fi-sheet {
+  border-top: 1px solid var(--graphite);
+  background:
+    radial-gradient(circle, #2c2c32 2.1px, transparent 2.7px) top left / 19px 11px repeat-x,
+    radial-gradient(circle, #2c2c32 2.1px, transparent 2.7px) bottom left / 19px 11px repeat-x,
+    var(--panel);
+  padding: 16px 0 14px;
+}
+
+.fi-sheet-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 0 16px 10px;
+}
+
+.fi-sheet-head h2 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.fi-sheet-status {
+  margin: 0;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--silver);
+  font-variant-numeric: tabular-nums;
+}
+
+.fi-sheet-status strong {
+  color: var(--ivory);
+  font-weight: 600;
+}
+
+.fi-sheet-hint {
+  margin: 0 0 0 auto;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+.fi-strip {
+  display: flex;
+  gap: 9px;
+  overflow-x: auto;
+  padding: 6px 16px 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--graphite) transparent;
+}
+
+.fi-cell {
+  flex: 0 0 auto;
+  width: 118px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.fi-cell-img {
+  position: relative;
+  display: block;
+}
+
+.fi-cell img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid #33333a;
+  background: #000;
+}
+
+.fi-cell-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--orange);
+  color: #101014;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 2px 4px;
+}
+
+.fi-cell-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px;
+  color: var(--silver);
+  font-variant-numeric: tabular-nums;
+}
+
+.fi-cell:hover img {
+  border-color: rgb(242 237 228 / 0.55);
+}
+
+.fi-cell:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.fi-cell.is-active img {
+  border-color: var(--orange);
+  outline: 1px solid var(--orange);
+  outline-offset: 1px;
+}
+
+.fi-cell.is-active .fi-cell-no {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------- columns */
+.fi-columns {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 26px;
+  margin-top: 26px;
+}
+
+.fi-section-head h2 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.fi-section-head p {
+  margin: 0;
+  color: var(--silver);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.fi-scene-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.fi-scene {
+  display: grid;
+  grid-template-columns: 148px 1fr;
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background: var(--ink-2);
+  border: 1px solid var(--rule);
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.fi-scene img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid #33333a;
+  background: #000;
+}
+
+.fi-scene-text {
+  display: grid;
+  gap: 3px;
+}
+
+.fi-scene-no {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--silver);
+}
+
+.fi-scene-title {
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.fi-scene-range {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--silver);
+  font-variant-numeric: tabular-nums;
+}
+
+.fi-scene:hover {
+  border-color: rgb(242 237 228 / 0.4);
+}
+
+.fi-scene:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.fi-scene.is-active {
+  border-color: var(--orange);
+  box-shadow: inset 3px 0 0 var(--orange);
+}
+
+.fi-scene.is-active .fi-scene-no {
+  color: var(--orange);
+}
+
+/* ----------------------------------------------------------------- about */
+.fi-features {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.fi-features li {
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--silver);
+}
+
+.fi-features strong {
+  color: var(--ivory);
+  font-weight: 600;
+}
+
+.fi-tech {
+  margin: 18px 0 0;
+  border: 1px solid var(--rule);
+  background: var(--ink-2);
+}
+
+.fi-tech > div {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 12px;
+  padding: 9px 12px;
+}
+
+.fi-tech > div + div {
+  border-top: 1px solid var(--rule);
+}
+
+.fi-tech dt {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  padding-top: 2px;
+}
+
+.fi-tech dd {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ivory);
+}
+
+/* ---------------------------------------------------------------- footer */
+.fi-footer {
+  margin-top: 30px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.fi-footer p {
+  margin: 0;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--silver);
+}
+
+/* ------------------------------------------------------------- responsive */
+@media (max-width: 900px) {
+  .fi-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .fi-page {
+    padding: 20px 14px 32px;
+  }
+
+  .fi-wordmark h1 {
+    font-size: 23px;
+  }
+
+  .fi-header-meta {
+    text-align: left;
+  }
+
+  .fi-cell {
+    width: 96px;
+  }
+
+  .fi-scene {
+    grid-template-columns: 112px 1fr;
+  }
+
+  .fi-sheet-hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fi-strip {
+    scroll-behavior: auto;
+  }
+}
