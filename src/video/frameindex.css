@@ -1,0 +1,443 @@
+/*
+ * FRAME INDEX — design layer.
+ * A matte film-archive editorial skin: Deep Ink Black, Graphite, Warm Ivory,
+ * Muted Silver and a restrained Signal Orange. Flat surfaces, 1px rules,
+ * square corners, tabular timecodes. No glass, no blur, no glow, no gradients
+ * standing in for design — the interface reads like the index card of a film
+ * archive. Loaded after the scaffold skin; these rules are the skin's identity.
+ */
+
+/* ------------------------------------------------------------------ tokens */
+.media-skin[data-theme="scaffold"][data-preset="video"] {
+  --fi-ink: #0b0b0d;
+  --fi-ink-2: #101014;
+  --fi-graphite: #43434a;
+  --fi-ivory: #f2ede4;
+  --fi-silver: #a7a29a;
+  --fi-orange: #ff5a1f;
+  --fi-rule: rgb(242 237 228 / 0.18);
+  --fi-rule-strong: rgb(242 237 228 / 0.42);
+
+  --media-accent-color: var(--fi-orange);
+  --media-accent-text-color: #101014;
+  --media-foreground: var(--fi-ivory);
+  --media-popover: var(--fi-ink-2);
+  --media-popover-foreground: var(--fi-ivory);
+  --media-muted: var(--fi-graphite);
+  --media-button-highlight: rgb(242 237 228 / 0.13);
+  --media-ring: var(--fi-orange);
+  --media-background: rgb(9 9 11 / 0.9);
+  --media-border-color: var(--fi-rule);
+  --media-font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --media-border-radius: 0px;
+
+  font-family: var(--media-font-family);
+  background: var(--fi-ink);
+}
+
+/* Flat archive bands instead of gradient scrims: legibility comes from a
+   solid matte strip, not a fade. */
+.media-skin .video-controls-backdrop {
+  background: none;
+}
+
+/* ------------------------------------------------------------------ slate */
+.media-skin .fi-slate {
+  justify-content: flex-start;
+  gap: calc(var(--media-spacing) * 3);
+  padding: calc(var(--media-spacing) * 2.5) calc(var(--media-spacing) * 4);
+  background: rgb(9 9 11 / 0.86);
+  border-bottom: 1px solid var(--fi-rule);
+}
+
+.media-skin .fi-slate-brand {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--media-spacing) * 2.5);
+  flex-shrink: 0;
+}
+
+.media-skin .fi-slate-mark {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--fi-ivory);
+  color: var(--fi-ivory);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.media-skin .fi-slate-name {
+  color: var(--fi-ivory);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  white-space: nowrap;
+}
+
+.media-skin .fi-slate-title {
+  color: var(--fi-silver);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media-skin .fi-slate-tc {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--media-spacing) * 2);
+  flex-shrink: 0;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+.media-skin .fi-slate-tc-label {
+  color: var(--fi-orange);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.media-skin .fi-slate-time {
+  color: var(--fi-ivory);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------------ centre */
+.media-skin .video-controls-center {
+  gap: calc(var(--media-spacing) * 4);
+}
+
+.media-skin .fi-centre-play {
+  width: 88px;
+  height: 88px;
+  background: rgb(9 9 11 / 0.78);
+  border: 1px solid var(--fi-rule-strong);
+  box-shadow:
+    inset 0 0 0 5px rgb(9 9 11 / 0.55),
+    inset 0 0 0 6px rgb(242 237 228 / 0.22);
+  color: var(--fi-ivory);
+}
+
+.media-skin .fi-centre-play .video-controls-center-play-icon {
+  width: 36px;
+  height: 36px;
+}
+
+@media (hover: hover) {
+  .media-skin .fi-centre-play:hover {
+    background: rgb(9 9 11 / 0.9);
+    border-color: var(--fi-ivory);
+  }
+}
+
+.media-skin .video-controls-center-seek {
+  width: 54px;
+  height: 54px;
+  background: rgb(9 9 11 / 0.66);
+  border: 1px solid rgb(242 237 228 / 0.3);
+  color: var(--fi-ivory);
+}
+
+.media-skin .video-controls-center-seek .media-seek-button-label {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px;
+}
+
+/* ------------------------------------------------------------- control bar */
+.media-skin .fi-control-bar {
+  background: rgb(9 9 11 / 0.92);
+  border-top: 1px solid var(--fi-rule);
+  padding: calc(var(--media-spacing) * 2) calc(var(--media-spacing) * 3)
+    calc(var(--media-spacing) * 2.5);
+  gap: calc(var(--media-spacing) * 1.5);
+}
+
+/* The index rule: a ruled line with frame ticks, an orange played span and a
+   rectangular index tab for a thumb. */
+.media-skin .fi-slider-row {
+  padding-inline: calc(var(--media-spacing) * 1);
+}
+
+.media-skin .media-time-slider {
+  height: calc(var(--media-spacing) * 7);
+}
+
+.media-skin .media-time-slider-track {
+  height: 3px;
+  background: #55555e;
+  border-radius: 0;
+}
+
+.media-skin .media-time-slider-buffer {
+  background: rgb(242 237 228 / 0.22);
+  border-radius: 0;
+}
+
+.media-skin .media-time-slider-fill {
+  background: var(--fi-orange);
+  border-radius: 0;
+}
+
+.media-skin .media-time-slider-chapters {
+  background-image: repeating-linear-gradient(
+    to right,
+    rgb(242 237 228 / 0.35) 0,
+    rgb(242 237 228 / 0.35) 1px,
+    transparent 1px,
+    transparent 34px
+  );
+  background-size: 100% 7px;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+
+.media-skin .media-time-slider-chapter {
+  border-radius: 0;
+}
+
+.media-skin .media-time-slider-thumb {
+  width: 11px;
+  height: 19px;
+  background: var(--fi-orange);
+  border: 1px solid var(--fi-ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.media-skin .media-time-slider-preview {
+  background: var(--fi-ink-2);
+  border: 1px solid var(--fi-rule-strong);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgb(0 0 0 / 0.4);
+  padding: calc(var(--media-spacing) * 1.5) calc(var(--media-spacing) * 2.5);
+}
+
+.media-skin .media-time-slider-value {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--fi-ivory);
+}
+
+.media-skin .media-time-slider-chapter-title {
+  color: var(--fi-orange);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------- buttons */
+.media-skin .media-button {
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: var(--fi-ivory);
+}
+
+@media (hover: hover) {
+  .media-skin .media-button:hover {
+    background: rgb(242 237 228 / 0.1);
+    border-color: var(--fi-rule);
+  }
+}
+
+.media-skin .media-button:focus-visible {
+  outline: 2px solid var(--fi-orange);
+  outline-offset: 2px;
+  background: rgb(242 237 228 / 0.1);
+}
+
+.media-skin .video-controls-row .media-button {
+  width: calc(var(--media-spacing) * 10);
+  height: calc(var(--media-spacing) * 10);
+}
+
+.media-skin .media-settings-button {
+  width: auto;
+  padding-inline: calc(var(--media-spacing) * 2);
+  gap: calc(var(--media-spacing) * 1.5);
+}
+
+.media-skin .media-settings-button-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------------------------------------- time */
+.media-skin .media-time-group {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  margin-left: calc(var(--media-spacing) * 2);
+}
+
+.media-skin .media-time-current-value,
+.media-skin .media-time-toggle {
+  color: var(--fi-ivory);
+}
+
+.media-skin .media-time-separator,
+.media-skin .media-time-duration-value {
+  color: var(--fi-silver);
+}
+
+/* ------------------------------------------------------- menus & popovers */
+.media-skin .media-menu-popup,
+.media-skin .media-volume-popover-popup,
+.media-skin .media-tooltip-popup {
+  background: var(--fi-ink-2);
+  border: 1px solid var(--fi-rule-strong);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgb(0 0 0 / 0.4);
+  color: var(--fi-ivory);
+}
+
+.media-skin .media-menu-item {
+  border-radius: 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (hover: hover) {
+  .media-skin .media-menu-item:hover {
+    background: rgb(242 237 228 / 0.09);
+  }
+}
+
+.media-skin .media-menu-item:focus-visible,
+.media-skin .media-menu-radio-item:focus-visible {
+  outline: 2px solid var(--fi-orange);
+  outline-offset: -2px;
+}
+
+.media-skin .media-menu-hint-label {
+  color: var(--fi-orange);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.media-skin .media-menu-indicator {
+  color: var(--fi-orange);
+}
+
+.media-skin .media-volume-slider-track {
+  background: #55555e;
+  border-radius: 0;
+}
+
+.media-skin .media-volume-slider-fill {
+  background: var(--fi-ivory);
+  border-radius: 0;
+}
+
+.media-skin .media-volume-slider-thumb {
+  background: var(--fi-orange);
+  border: 1px solid var(--fi-ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.media-skin .media-tooltip-popup {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------- indicators */
+.media-skin .media-indicator {
+  background: var(--fi-ink-2);
+  border: 1px solid var(--fi-rule-strong);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgb(0 0 0 / 0.4);
+  color: var(--fi-ivory);
+}
+
+.media-skin .media-indicator-value,
+.media-skin .media-seek-indicator-value,
+.media-skin .media-volume-indicator-value {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.media-skin .media-seek-indicator-icon {
+  color: var(--fi-orange);
+}
+
+.media-skin .media-buffering-indicator {
+  color: var(--fi-orange);
+}
+
+/* ---------------------------------------------------------------- captions */
+.media-skin ::cue {
+  background: rgb(9 9 11 / 0.88);
+  color: var(--fi-ivory);
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------------ dialog */
+.media-skin .media-dialog-popup {
+  background: var(--fi-ink-2);
+  border: 1px solid var(--fi-rule-strong);
+  border-radius: 0;
+  box-shadow: 8px 8px 0 rgb(0 0 0 / 0.45);
+  color: var(--fi-ivory);
+}
+
+.media-skin .media-dialog-backdrop {
+  background: rgb(5 5 6 / 0.72);
+}
+
+/* --------------------------------------------------------------- responsive */
+@media (max-width: 640px) {
+  .media-skin .fi-slate-title,
+  .media-skin .media-settings-button-label {
+    display: none;
+  }
+
+  .media-skin .fi-centre-play {
+    width: 68px;
+    height: 68px;
+  }
+
+  .media-skin .video-controls-center-seek {
+    width: 46px;
+    height: 46px;
+  }
+
+  .media-skin .fi-slate {
+    padding-inline: calc(var(--media-spacing) * 3);
+  }
+}
+
+/* ------------------------------------------------------------ reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .media-skin *,
+  .media-skin *::before,
+  .media-skin *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .media-skin .media-buffering-indicator-spinner-icon {
+    animation: none;
+  }
+}
