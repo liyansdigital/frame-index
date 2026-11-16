@@ -3,6 +3,16 @@ dist
 *.local
 .DS_Store
 
+# Test and coverage output (the verified run record lives in tests/RESULTS.md).
+coverage
+playwright-report/
+test-results/
+
+# Local environment files — the app reads none, but never commit one by accident.
+.env
+.env.*
+!.env.example
+
 # Hosting CLIs keep their project links here.
 .vercel
 .netlify
