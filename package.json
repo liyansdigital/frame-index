@@ -16,7 +16,7 @@
     "deploy:cloudflare": "npm run build && npx --yes wrangler@4 pages deploy dist --project-name frameindex"
   },
   "dependencies": {
-    "@videojs/html": "10.4.0"
+    "@videojs/html": "10.5.0"
   },
   "devDependencies": {
     "@base-ui/react": "^1.6.0",
